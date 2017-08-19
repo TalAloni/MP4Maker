@@ -20,6 +20,7 @@ namespace MediaFormatLibrary.MP4
         /// </summary>
         Null = 0x6E756C6C, // 'null'
 
+        ODSM = 0x6F64736D, // 'odsm', scene description
         QuickTimeMetaData = 0x6D646972, // 'mdir'
         QuickTimeMetaDataTags = 0x6D647461, // 'mdta', part of [QuickTime File Format Specification]
     }
