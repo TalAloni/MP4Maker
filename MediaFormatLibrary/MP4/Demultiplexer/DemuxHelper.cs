@@ -95,7 +95,7 @@ namespace MediaFormatLibrary.MP4
                             {
                                 nalUnitSize = ByteReader.ReadByte(buffer, offset);
                             }
-                            else if (avcConfiguration.LengthSizeMinus1 + 1 == 1)
+                            else if (avcConfiguration.LengthSizeMinus1 + 1 == 2)
                             {
                                 nalUnitSize = BigEndianConverter.ToUInt16(buffer, offset);
                             }
