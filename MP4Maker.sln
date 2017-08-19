@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MP4Maker", "MP4Maker\MP4Maker.csproj", "{4730FBA2-5B18-4CF7-AC59-92DCA0C0BD91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaFormatLibrary", "MediaFormatLibrary\MediaFormatLibrary.csproj", "{72E4470C-57B0-4996-B942-C01B91C8F290}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4730FBA2-5B18-4CF7-AC59-92DCA0C0BD91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4730FBA2-5B18-4CF7-AC59-92DCA0C0BD91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4730FBA2-5B18-4CF7-AC59-92DCA0C0BD91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4730FBA2-5B18-4CF7-AC59-92DCA0C0BD91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72E4470C-57B0-4996-B942-C01B91C8F290}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72E4470C-57B0-4996-B942-C01B91C8F290}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72E4470C-57B0-4996-B942-C01B91C8F290}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72E4470C-57B0-4996-B942-C01B91C8F290}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

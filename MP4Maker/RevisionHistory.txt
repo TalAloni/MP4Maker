@@ -1,0 +1,14 @@
+Revision History:
+-----------------
+1.0.0 - Initial release.
+
+1.0.1 - Temporal offset between the first audio and video sample data of an interleave unit is now kept to a minimum.
+        Writing library information is now written when multiplexing using the 'mp42' brand.
+
+1.0.2 - /view can now be used to print H.264 / MPEG2 transport stream file information
+
+1.0.3 - Improved MPEG2 transport stream file information printout.
+
+1.0.4 - Minor improvements.
+
+1.0.5 - Added MPEG2 transport stream multiplexer (TS/M2TS/SSIF support).
