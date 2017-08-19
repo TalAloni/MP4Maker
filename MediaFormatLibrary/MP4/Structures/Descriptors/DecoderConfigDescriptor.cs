@@ -61,7 +61,7 @@ namespace MediaFormatLibrary.MP4
             StreamType = (StreamType)((temp & 0xFC) >> 2);
             Upstream = (temp & 0x2) > 0;
             Reserved = (temp & 0x1) > 0;
-            BufferSizeDB = MP4Helper.ReadUInt24(stream);
+            BufferSizeDB = BigEndianReader.ReadUInt24(stream);
             MaxBitRate = BigEndianReader.ReadUInt32(stream);
             AvgBitRate = BigEndianReader.ReadUInt32(stream);
 
@@ -81,7 +81,7 @@ namespace MediaFormatLibrary.MP4
             stream.WriteByte((byte)ObjectTypeIndication);
             byte temp = (byte)((byte)StreamType << 2 | Convert.ToByte(Upstream) << 1 | Convert.ToByte(Reserved));
             stream.WriteByte(temp);
-            MP4Helper.WriteUInt24(stream, BufferSizeDB);
+            BigEndianWriter.WriteUInt24(stream, BufferSizeDB);
             BigEndianWriter.WriteUInt32(stream, MaxBitRate);
             BigEndianWriter.WriteUInt32(stream, AvgBitRate);
             foreach (DecoderSpecificInfo info in DecSpecificInfo)

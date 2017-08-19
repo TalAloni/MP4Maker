@@ -34,29 +34,16 @@ namespace MediaFormatLibrary.Mpeg2
 
         public PesPacketHeader(byte[] buffer, ref int offset)
         {
-            uint startCodePrefix = ReadUInt24(buffer, ref offset);
+            uint startCodePrefix = BigEndianReader.ReadUInt24(buffer, ref offset);
             StreamID = (ElementaryStreamID)ByteReader.ReadByte(buffer, ref offset);
             PacketLength = BigEndianReader.ReadUInt16(buffer, ref offset);
         }
 
         public void WriteBytes(byte[] buffer, ref int offset)
         {
-            WriteUInt24(buffer, ref offset, PacketStartCodePrefix);
+            BigEndianWriter.WriteUInt24(buffer, ref offset, PacketStartCodePrefix);
             ByteWriter.WriteByte(buffer, ref offset, (byte)StreamID);
             BigEndianWriter.WriteUInt16(buffer, ref offset, PacketLength);
-        }
-
-        public static uint ReadUInt24(byte[] buffer, ref int offset)
-        {
-            byte[] temp = ByteReader.ReadBytes(buffer, ref offset, 3);
-            return (uint)((buffer[0] << 16) | (buffer[1] << 8) | (buffer[2] << 0));
-        }
-
-        public static void WriteUInt24(byte[] buffer, ref int offset, uint value)
-        {
-            ByteWriter.WriteByte(buffer, ref offset, (byte)((value >> 16) & 0xFF));
-            ByteWriter.WriteByte(buffer, ref offset, (byte)((value >> 8) & 0xFF));
-            ByteWriter.WriteByte(buffer, ref offset, (byte)((value >> 0) & 0xFF));
         }
     }
 }

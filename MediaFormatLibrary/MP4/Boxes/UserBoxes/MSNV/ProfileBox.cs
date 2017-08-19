@@ -34,7 +34,7 @@ namespace MediaFormatLibrary.MP4
         {
             base.ReadData(stream);
             Version = (byte)stream.ReadByte();
-            Flags = MP4Helper.ReadUInt24(stream);
+            Flags = BigEndianReader.ReadUInt24(stream);
             uint entryCount = BigEndianReader.ReadUInt32(stream);
         }
 
@@ -42,7 +42,7 @@ namespace MediaFormatLibrary.MP4
         {
             base.WriteData(stream);
             stream.WriteByte(Version);
-            MP4Helper.WriteUInt24(stream, Flags);
+            BigEndianWriter.WriteUInt24(stream, Flags);
             BigEndianWriter.WriteUInt32(stream, (uint)Children.Count);
         }
 

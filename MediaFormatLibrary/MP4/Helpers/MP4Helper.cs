@@ -14,20 +14,6 @@ namespace MediaFormatLibrary.MP4
 {
     public class MP4Helper
     {
-        public static uint ReadUInt24(Stream stream)
-        {
-            byte[] buffer = new byte[3];
-            stream.Read(buffer, 0, 3);
-            return (uint)((buffer[0] << 16) | (buffer[1] << 8) | (buffer[2] << 0));
-        }
-
-        public static void WriteUInt24(Stream stream, uint value)
-        {
-            stream.WriteByte((byte)((value >> 16) & 0xFF));
-            stream.WriteByte((byte)((value >> 8) & 0xFF));
-            stream.WriteByte((byte)((value >> 0) & 0xFF));
-        }
-
         public static DateTime ReadUInt32Time(Stream stream)
         {
             uint span = BigEndianReader.ReadUInt32(stream);

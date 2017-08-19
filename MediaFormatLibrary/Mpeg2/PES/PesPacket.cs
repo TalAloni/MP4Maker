@@ -94,7 +94,7 @@ namespace MediaFormatLibrary.Mpeg2
             int offset = 0;
             if (buffer.Length >= PesPacketHeader.Length)
             {
-                uint startCodePrefix = PesPacketHeader.ReadUInt24(buffer, ref offset);
+                uint startCodePrefix = BigEndianReader.ReadUInt24(buffer, ref offset);
                 if (startCodePrefix == PesPacketHeader.PacketStartCodePrefix)
                 {
                     return new PesPacket(buffer);
@@ -106,7 +106,7 @@ namespace MediaFormatLibrary.Mpeg2
         public static bool IsPesPacket(byte[] buffer)
         {
             int offset = 0;
-            uint startCodePrefix = PesPacketHeader.ReadUInt24(buffer, ref offset);
+            uint startCodePrefix = BigEndianReader.ReadUInt24(buffer, ref offset);
             return (startCodePrefix == PesPacketHeader.PacketStartCodePrefix);
         }
 

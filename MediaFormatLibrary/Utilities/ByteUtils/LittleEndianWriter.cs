@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
@@ -23,6 +22,12 @@ namespace Utilities
         {
             byte[] bytes = LittleEndianConverter.GetBytes(value);
             Array.Copy(bytes, 0, buffer, offset, bytes.Length);
+        }
+
+        public static void WriteInt16(byte[] buffer, ref int offset, short value)
+        {
+            WriteInt16(buffer, offset, value);
+            offset += 2;
         }
 
         public static void WriteUInt32(byte[] buffer, int offset, uint value)
@@ -65,6 +70,12 @@ namespace Utilities
         {
             byte[] bytes = LittleEndianConverter.GetBytes(value);
             Array.Copy(bytes, 0, buffer, offset, bytes.Length);
+        }
+
+        public static void WriteInt64(byte[] buffer, ref int offset, long value)
+        {
+            WriteInt64(buffer, offset, value);
+            offset += 8;
         }
 
         public static void WriteGuidBytes(byte[] buffer, int offset, Guid value)

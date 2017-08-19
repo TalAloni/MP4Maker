@@ -129,7 +129,7 @@ namespace MediaFormatLibrary.Mpeg2
                 {
                     if (packet.Header.PayloadExist)
                     {
-                        int index = m_buffer.IndexOf(pid);
+                        int index = m_buffer.IndexOfKey(pid);
                         if (index >= 0)
                         {
                             List<TransportPacket> result = m_buffer[index].Value;
@@ -152,7 +152,7 @@ namespace MediaFormatLibrary.Mpeg2
                 }
                 else // PayloadUnitStartIndicator == false
                 {
-                    int index = m_buffer.IndexOf(pid);
+                    int index = m_buffer.IndexOfKey(pid);
                     if (index >= 0)
                     {
                         m_buffer[index].Value.Add(packet);

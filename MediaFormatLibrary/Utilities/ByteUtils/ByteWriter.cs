@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
@@ -135,15 +134,21 @@ namespace Utilities
             }
         }
 
+        public static void WriteUTF8String(Stream stream, string value)
+        {
+            byte[] bytes = UnicodeEncoding.UTF8.GetBytes(value);
+            stream.Write(bytes, 0, bytes.Length);
+        }
+
         public static void WriteUTF16String(Stream stream, string value)
         {
             byte[] bytes = UnicodeEncoding.Unicode.GetBytes(value);
             stream.Write(bytes, 0, bytes.Length);
         }
 
-        public static void WriteUTF8String(Stream stream, string value)
+        public static void WriteUTF16BEString(Stream stream, string value)
         {
-            byte[] bytes = UnicodeEncoding.UTF8.GetBytes(value);
+            byte[] bytes = UnicodeEncoding.BigEndianUnicode.GetBytes(value);
             stream.Write(bytes, 0, bytes.Length);
         }
 
@@ -151,12 +156,6 @@ namespace Utilities
         {
             WriteUTF8String(stream, value);
             WriteBytes(stream, new byte[] { 0x00 });
-        }
-
-        public static void WriteUTF16BEString(Stream stream, string value)
-        {
-            byte[] bytes = UnicodeEncoding.BigEndianUnicode.GetBytes(value);
-            stream.Write(bytes, 0, bytes.Length);
         }
 
         public static void WriteNullTerminatedUTF16BEString(Stream stream, string value)

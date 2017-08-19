@@ -1,9 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Web;
 
 namespace Utilities
 {
@@ -122,6 +117,141 @@ namespace Utilities
                 try
                 {
                     result = Convert.ToUInt64(obj);
+                }
+                catch
+                { }
+            }
+            return result;
+        }
+
+        public static float ToFloat(object obj)
+        {
+            return ToFloat(obj, 0);
+        }
+
+		public static float ToFloat(object obj, float defaultValue)
+		{
+            float result = defaultValue;
+			if (obj != null)
+			{
+				try
+				{
+					result = Convert.ToSingle(obj);
+				}
+				catch
+				{}
+			}
+			return result;
+		}
+
+        public static double ToDouble(object obj)
+        {
+            return ToDouble(obj, 0);
+        }
+
+        public static double ToDouble(object obj, double defaultValue)
+        {
+            double result = defaultValue;
+            if (obj != null)
+            {
+                try
+                {
+                    result = Convert.ToDouble(obj);
+                }
+                catch
+                { }
+            }
+            return result;
+        }
+
+        public static decimal ToDecimal(object obj)
+        {
+            return ToDecimal(obj, 0);
+        }
+
+        public static decimal ToDecimal(object obj, decimal defaultValue)
+        {
+            decimal result = defaultValue;
+            if (obj != null)
+            {
+                try
+                {
+                    result = Convert.ToDecimal(obj);
+                }
+                catch
+                { }
+            }
+            return result;
+        }
+
+        public static bool ToBoolean(object obj)
+        {
+            return ToBoolean(obj, false);
+        }
+
+        public static bool ToBoolean(object obj, bool defaultValue)
+        {
+            bool result = defaultValue;
+            if (obj != null)
+            {
+                try
+                {
+                    result = Convert.ToBoolean(obj);
+                }
+                catch
+                { }
+            }
+            return result;
+        }
+
+        public static string ToString(object obj)
+        {
+            string result = String.Empty;
+            if (obj != null)
+            {
+                try
+                {
+                    result = Convert.ToString(obj);
+                }
+                catch
+                {}
+            }
+            return result;
+        }
+
+        public static char ToChar(object obj)
+        {
+            return ToChar(obj, new char());
+        }
+
+        public static char ToChar(object obj, char defaultValue)
+        {
+            char result = defaultValue;
+            if (obj != null)
+            {
+                try
+                {
+                    result = Convert.ToChar(obj);
+                }
+                catch
+                { }
+            }
+            return result;
+        }
+
+        public static DateTime ToDateTime(object obj)
+        {
+            return ToDateTime(obj, DateTime.MinValue);
+        }
+
+        public static DateTime ToDateTime(object obj, DateTime defaultValue)
+        {
+            DateTime result = defaultValue;
+            if (obj != null)
+            {
+                try
+                {
+                    result = Convert.ToDateTime(obj);
                 }
                 catch
                 { }

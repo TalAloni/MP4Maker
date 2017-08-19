@@ -29,14 +29,14 @@ namespace MediaFormatLibrary.MP4
         {
             base.ReadData(stream);
             Version = (byte)stream.ReadByte();
-            Flags = MP4Helper.ReadUInt24(stream);
+            Flags = BigEndianReader.ReadUInt24(stream);
         }
 
         public override void WriteData(Stream stream)
         {
             base.WriteData(stream);
             stream.WriteByte(Version);
-            MP4Helper.WriteUInt24(stream, Flags);
+            BigEndianWriter.WriteUInt24(stream, Flags);
         }
     }
 }
