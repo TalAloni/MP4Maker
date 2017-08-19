@@ -60,7 +60,7 @@ namespace MP4Maker
                 SampleDescriptionBox sampleDescription = (SampleDescriptionBox)BoxHelper.FindBoxFromPath(track.Children, BoxType.MediaBox, BoxType.MediaInformationBox, BoxType.SampleTableBox, BoxType.SampleDescriptionBox);
                 if (handlerBox.HandlerType == HandlerType.Audio)
                 {
-                    AudioSampleEntry sampleEntry = (AudioSampleEntry)sampleDescription.Children[0];
+                    AudioSampleEntry sampleEntry = sampleDescription.Children[0] as AudioSampleEntry;
                     if (sampleEntry != null)
                     {
                         int duration = (int)(trackHeader.Duration / movieHeader.Timescale);
@@ -69,7 +69,7 @@ namespace MP4Maker
                 }
                 else if (handlerBox.HandlerType == HandlerType.Video)
                 {
-                    VisualSampleEntry sampleEntry = (VisualSampleEntry)sampleDescription.Children[0];
+                    VisualSampleEntry sampleEntry = sampleDescription.Children[0] as VisualSampleEntry;
                     if (sampleEntry != null)
                     {
                         int duration = (int)(trackHeader.Duration / movieHeader.Timescale);
@@ -196,7 +196,7 @@ namespace MP4Maker
             if (handlerBox.HandlerType == HandlerType.Audio ||
                 handlerBox.HandlerType == HandlerType.Video)
             {
-                return (SampleEntry)sampleDescription.Children[0];
+                return sampleDescription.Children[0] as SampleEntry;
             }
             return null;
         }
