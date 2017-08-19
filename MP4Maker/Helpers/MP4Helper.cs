@@ -123,6 +123,10 @@ namespace MP4Maker
                 {
                     SampleTableBox sampleTable2 = (SampleTableBox)BoxHelper.FindBoxFromPath(tracks[trackIndex].Children, BoxType.MediaBox, BoxType.MediaInformationBox, BoxType.SampleTableBox);
                     SampleEntry sampleEntry2 = GetSampleEntry((TrackBox)tracks[trackIndex]);
+                    if (sampleEntry2 == null)
+                    {
+                        continue;
+                    }
                     SampleToChunkBox sampleToChunk2 = (SampleToChunkBox)BoxHelper.FindBox(sampleTable2.Children, BoxType.SampleToChunkBox);
                     List<ulong> chunkOffsetList2 = TrackHelper.FindChunkOffsetList(sampleTable2);
                     List<SampleToChunkEntry> sampleToChunkList2 = TrackHelper.UncompressSampleToChunkBox(sampleToChunk2, chunkOffsetList2.Count);
@@ -189,7 +193,12 @@ namespace MP4Maker
             TrackHeaderBox trackHeader = (TrackHeaderBox)BoxHelper.FindBox(track.Children, BoxType.TrackHeaderBox);
             HandlerBox handlerBox = (HandlerBox)BoxHelper.FindBoxFromPath(track.Children, BoxType.MediaBox, BoxType.HandlerReferenceBox);
             SampleDescriptionBox sampleDescription = (SampleDescriptionBox)BoxHelper.FindBoxFromPath(track.Children, BoxType.MediaBox, BoxType.MediaInformationBox, BoxType.SampleTableBox, BoxType.SampleDescriptionBox);
-            return (SampleEntry)sampleDescription.Children[0];
+            if (handlerBox.HandlerType == HandlerType.Audio ||
+                handlerBox.HandlerType == HandlerType.Video)
+            {
+                return (SampleEntry)sampleDescription.Children[0];
+            }
+            return null;
         }
 
         public static string ToTimeSpanString(int totalSeconds)
