@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.35931.193
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MP4Maker", "MP4Maker\MP4Maker.csproj", "{4730FBA2-5B18-4CF7-AC59-92DCA0C0BD91}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaFormatLibrary", "MediaFormatLibrary\MediaFormatLibrary.csproj", "{72E4470C-57B0-4996-B942-C01B91C8F290}"
@@ -22,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A6B4958-B88E-44C7-A274-EF6CDA3503D1}
 	EndGlobalSection
 EndGlobal
