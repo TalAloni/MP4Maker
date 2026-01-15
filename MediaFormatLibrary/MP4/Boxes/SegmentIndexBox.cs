@@ -21,7 +21,8 @@ namespace MediaFormatLibrary.MP4
         public List<SegmentReference> References = new List<SegmentReference>();
 
         public SegmentIndexBox() : base(BoxType.SegmentIndexBox)
-        { }
+        {
+        }
 
         public SegmentIndexBox(Stream stream) : base(stream)
         {
