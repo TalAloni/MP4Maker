@@ -54,7 +54,25 @@ namespace MediaFormatLibrary.MP4
         public override void WriteData(Stream stream)
         {
             base.WriteData(stream);
-            throw new NotImplementedException();
+            BigEndianWriter.WriteUInt32(stream, ReferenceID);
+            BigEndianWriter.WriteUInt32(stream, TimeScale);
+            if (Version == 0)
+            {
+                BigEndianWriter.WriteUInt32(stream, (uint)EarliestPresentationTime);
+                BigEndianWriter.WriteUInt32(stream, (uint)FirstOffet);
+            }
+            else
+            {
+                BigEndianWriter.WriteUInt64(stream, EarliestPresentationTime);
+                BigEndianWriter.WriteUInt64(stream, FirstOffet);
+            }
+
+            BigEndianWriter.WriteUInt16(stream, Reserved);
+            BigEndianWriter.WriteUInt16(stream, (ushort)References.Count);
+            foreach (SegmentReference reference in References)
+            {
+                reference.WriteData(stream);
+            }
         }
     }
 
@@ -81,6 +99,15 @@ namespace MediaFormatLibrary.MP4
             StartsWithSap = (temp & 0x80000000) > 0;
             SapType = (byte)((temp & 0x70000000) >> 28);
             SapDeltaTime = (uint)(temp & 0x0FFFFFFF);
+        }
+
+        public void WriteData(Stream stream)
+        {
+            uint temp = ((uint)Convert.ToInt32(ReferenceType) << 31) | (ReferenceSize & 0x7FFFFFFF);
+            BigEndianWriter.WriteUInt32(stream, temp);
+            BigEndianWriter.WriteUInt32(stream, SubsegmentDuration);
+            temp = ((uint)Convert.ToInt32(StartsWithSap) << 31) | (uint)((SapType & 0x7) << 28) | (SapDeltaTime & 0x0FFFFFFF);
+            BigEndianWriter.WriteUInt32(stream, temp);
         }
     }
 }
