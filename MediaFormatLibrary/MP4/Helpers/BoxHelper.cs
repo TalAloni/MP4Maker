@@ -327,5 +327,20 @@ namespace MediaFormatLibrary.MP4
             }
             return mediaDataOffsets;
         }
+
+        public static long GetMovieFragmentBoxOffset(List<Box> rootBoxes)
+        {
+            long currentOffset = 0;
+            foreach (Box box in rootBoxes)
+            {
+                if (box.Type == BoxType.MovieFragmentBox)
+                {
+                    return currentOffset;
+                }
+                currentOffset += (long)box.Size;
+            }
+
+            return -1;
+        }
     }
 }
