@@ -70,7 +70,7 @@ namespace MP4Maker
                     if (sampleEntry != null)
                     {
                         int duration = (int)(trackHeader.Duration / movieHeader.Timescale);
-                        Console.WriteLine("Audio track: {0}, {1}Hz, {2} channels, Duration: {3}", sampleEntry.Type.ToString(), sampleEntry.SampleRate, sampleEntry.ChannelCount, ToTimeSpanString(duration));
+                        Console.WriteLine($"Audio track: {sampleEntry.Type.ToString()}, {sampleEntry.SampleRate}Hz, {sampleEntry.ChannelCount} channels, Duration: {ToTimeSpanString(duration)}");
                     }
                 }
                 else if (handlerBox.HandlerType == HandlerType.Video)
@@ -79,7 +79,7 @@ namespace MP4Maker
                     if (sampleEntry != null)
                     {
                         int duration = (int)(trackHeader.Duration / movieHeader.Timescale);
-                        Console.WriteLine("Video track: {0}, {1}x{2}, Duration: {3}", sampleEntry.Type.ToString(), sampleEntry.Width, sampleEntry.Height, ToTimeSpanString(duration));
+                        Console.WriteLine($"Video track: {sampleEntry.Type.ToString()}, {sampleEntry.Width}x{sampleEntry.Height}, Duration: {ToTimeSpanString(duration)}");
                     }
                 }
             }
