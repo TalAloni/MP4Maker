@@ -1,4 +1,4 @@
-/* Copyright (C) 2014-2015 Tal Aloni <tal.aloni.il@gmail.com>. All rights reserved.
+/* Copyright (C) 2014-2026 Tal Aloni <tal.aloni.il@gmail.com>. All rights reserved.
  * 
  * You can redistribute this program and/or modify it under the terms of
  * the GNU Lesser Public License as published by the Free Software Foundation,
@@ -51,6 +51,12 @@ namespace MP4Maker
         {
             Console.WriteLine();
             MovieBox movieBox = (MovieBox)BoxHelper.FindBox(rootBoxes, BoxType.MovieBox);
+            if (movieBox == null)
+            {
+                Console.WriteLine("This MP4 file does not contain MovieBox('moov') box");
+                return;
+            }
+
             MovieHeaderBox movieHeader = (MovieHeaderBox)BoxHelper.FindBox(movieBox.Children, BoxType.MovieHeaderBox);
             List<Box> tracks = BoxHelper.FindBoxes(movieBox.Children, BoxType.TrackBox);
             foreach (Box track in tracks)
@@ -110,6 +116,11 @@ namespace MP4Maker
         {
             Console.WriteLine();
             Box movieBox = BoxHelper.FindBox(rootBoxes, BoxType.MovieBox);
+            if (movieBox == null)
+            {
+                return;
+            }
+
             List<Box> tracks = BoxHelper.FindBoxes(movieBox.Children, BoxType.TrackBox);
             if (tracks.Count > 1)
             {
