@@ -137,6 +137,8 @@ namespace MediaFormatLibrary.MP4
                     return new SyncSampleBox(stream);
                 case BoxType.TrackFragmentBaseMediaDecodeTimeBox:
                     return new TrackFragmentBaseMediaDecodeTimeBox(stream);
+                case BoxType.TrackFragmentBox:
+                    return new TrackFragmentBox(stream);
                 case BoxType.TrackBox:
                     return new TrackBox(stream);
                 case BoxType.TrackHeaderBox:
