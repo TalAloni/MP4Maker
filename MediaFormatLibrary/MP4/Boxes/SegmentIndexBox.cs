@@ -55,14 +55,6 @@ namespace MediaFormatLibrary.MP4
             base.WriteData(stream);
             throw new NotImplementedException();
         }
-
-        public override BoxContentType ContentType
-        {
-            get
-            {
-                return BoxContentType.Data;
-            }
-        }
     }
 
     public class SegmentReference
