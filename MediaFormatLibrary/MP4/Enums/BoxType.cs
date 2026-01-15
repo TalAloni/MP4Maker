@@ -15,6 +15,7 @@ namespace MediaFormatLibrary.MP4
         DataEntryUrlBox = 0x75726C20, // 'url '
         DataInformationBox = 0x64696E66, // 'dinf'
         DataReferenceBox = 0x64726566, // 'dref'
+        SegmentIndexBox = 0x73696478, // 'sidx'
         DecodingTimeToSampleBox = 0x73747473, // 'stts'
         EditBox = 0x65647473, // 'edts'
         EditListBox = 0x656C7374, // 'elst'
