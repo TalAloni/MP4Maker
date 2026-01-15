@@ -115,6 +115,8 @@ namespace MediaFormatLibrary.MP4
                     return new MetaDataValueBox(stream);
                 case BoxType.MovieBox:
                     return new MovieBox(stream);
+                case BoxType.MovieFragmentBox:
+                    return new MovieFragmentBox(stream);
                 case BoxType.MovieHeaderBox:
                     return new MovieHeaderBox(stream);
                 case BoxType.MP4AudioSampleEntry:
