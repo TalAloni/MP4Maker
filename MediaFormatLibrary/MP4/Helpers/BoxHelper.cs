@@ -143,6 +143,8 @@ namespace MediaFormatLibrary.MP4
                     return new TrackFragmentBox(stream);
                 case BoxType.TrackBox:
                     return new TrackBox(stream);
+                case BoxType.TrackRunBox:
+                    return new TrackRunBox(stream);
                 case BoxType.TrackHeaderBox:
                     return new TrackHeaderBox(stream);
                 case BoxType.UserDataBox:

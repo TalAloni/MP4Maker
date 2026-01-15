@@ -59,6 +59,7 @@ namespace MediaFormatLibrary.MP4
         TrackFragmentHeaderBox = 0x74666864, // 'tfhd'
         TrackFragmentBox = 0x74726166, // 'traf'
         TrackBox = 0x7472616B, // 'trak'
+        TrackRunBox = 0x7472756E, // 'trun'
         TrackHeaderBox = 0x746B6864, // 'tkhd'
         TrackReferenceBox = 0x74726566, // 'tref'
     }
