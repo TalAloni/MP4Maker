@@ -53,7 +53,24 @@ namespace MP4Maker
             MovieBox movieBox = (MovieBox)BoxHelper.FindBox(rootBoxes, BoxType.MovieBox);
             if (movieBox == null)
             {
-                Console.WriteLine("This MP4 file does not contain MovieBox('moov') box");
+                List<Box> segmentIndexBoxes = BoxHelper.FindBoxes(rootBoxes, BoxType.SegmentIndexBox);
+                if (segmentIndexBoxes.Count == 0)
+                {
+                    Console.WriteLine("This MP4 file does not contain MovieBox ('moov') or SegmentIndexBox ('sidx')");
+                    return;
+                }
+
+                for (int boxIndex = 0; boxIndex < segmentIndexBoxes.Count; boxIndex++)
+                {
+                    SegmentIndexBox segmentIndexBox = (SegmentIndexBox)segmentIndexBoxes[boxIndex];
+                    uint duration = 0;
+                    foreach (SegmentReference segmentReference in segmentIndexBox.References)
+                    {
+                        duration += segmentReference.SubsegmentDuration;
+                    }
+                    double durationInSeconds = (double)duration / segmentIndexBox.TimeScale;
+                    Console.WriteLine($"Track ID: {segmentIndexBox.ReferenceID}, Duration: {durationInSeconds.ToString("0.000")} s");
+                }
                 return;
             }
 
