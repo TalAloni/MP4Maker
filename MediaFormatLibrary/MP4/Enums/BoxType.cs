@@ -56,6 +56,7 @@ namespace MediaFormatLibrary.MP4
         VideoMediaHeaderBox = 0x766D6864, // 'vmhd'
         VideoProfileEntry = 0x56505246, // 'VPRF'
         TrackFragmentBaseMediaDecodeTimeBox = 0x74666474, // 'tfdt'
+        TrackFragmentHeaderBox = 0x74666864, // 'tfhd'
         TrackFragmentBox = 0x74726166, // 'traf'
         TrackBox = 0x7472616B, // 'trak'
         TrackHeaderBox = 0x746B6864, // 'tkhd'
