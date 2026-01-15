@@ -36,6 +36,7 @@ namespace MediaFormatLibrary.MP4
         MetaBox = 0x6D657461, // 'meta'
         MetaDataBox = 0x4D544454, // 'MTDT'
         MetaDataValueBox = 0x64617461, // 'data'
+        MovieFragmentHeaderBox = 0x6D666864, // 'mfhd'
         MovieBox = 0x6D6F6F76, // 'moov'
         MovieExtendsBox = 0x6D766578, // 'mvex'
         MovieFragmentBox = 0x6D6F6F66, // 'moof'
