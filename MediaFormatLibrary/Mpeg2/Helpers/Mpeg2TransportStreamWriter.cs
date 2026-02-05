@@ -35,7 +35,6 @@ namespace MediaFormatLibrary.Mpeg2
             m_stream = stream;
         }
 
-        /// <param name="systemTimeClock">in units of 90 KHz</param>
         public void WritePCRPacket(ushort pid)
         {
             // In a packet that contains a PCR, the PCR will be a few ticks later than the arrival_time_stamp.

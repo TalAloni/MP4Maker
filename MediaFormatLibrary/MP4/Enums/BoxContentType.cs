@@ -7,7 +7,7 @@ namespace MediaFormatLibrary.MP4
         Children,
 
         /// <summary>
-        // See: http://atomicparsley.sourceforge.net/mpeg-4files.html
+        /// See: http://atomicparsley.sourceforge.net/mpeg-4files.html
         /// </summary>
         DataAndChildren,
     }
