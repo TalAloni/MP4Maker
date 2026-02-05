@@ -3,13 +3,13 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFrameworks>net20;net40</TargetFrameworks>
-    <Version>1.0.6</Version>
+    <Version>1.0.7</Version>
     <RootNamespace>MP4Maker</RootNamespace>
     <AssemblyName>MP4Maker</AssemblyName>
     <AssemblyTitle>MP4Maker</AssemblyTitle>
     <Product>MP4Maker</Product>
     <Authors>Tal Aloni</Authors>
-    <Copyright>Copyright © Tal Aloni 2014-2025</Copyright>
+    <Copyright>Copyright © Tal Aloni 2014-2026</Copyright>
   </PropertyGroup>
 
   <ItemGroup>

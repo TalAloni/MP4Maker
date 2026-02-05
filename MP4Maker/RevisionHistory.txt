@@ -14,3 +14,5 @@ Revision History:
 1.0.5 - Added MPEG2 transport stream multiplexer (TS/M2TS/SSIF support).
 
 1.0.6 - Minor improvements.
+
+1.0.7 - /view now displays track information for MP4 files containing MovieFragmentBox elements.
