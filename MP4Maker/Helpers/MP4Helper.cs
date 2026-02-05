@@ -60,17 +60,48 @@ namespace MP4Maker
                     return;
                 }
 
+                Dictionary<uint, uint> trackIDToTimescale = new Dictionary<uint, uint>();
+                Dictionary<uint, double> trackIDToDuration = new Dictionary<uint, double>();
                 for (int boxIndex = 0; boxIndex < segmentIndexBoxes.Count; boxIndex++)
                 {
                     SegmentIndexBox segmentIndexBox = (SegmentIndexBox)segmentIndexBoxes[boxIndex];
+                    uint trackID = segmentIndexBox.ReferenceID;
+                    trackIDToTimescale[trackID] = segmentIndexBox.TimeScale;
                     uint duration = 0;
                     foreach (SegmentReference segmentReference in segmentIndexBox.References)
                     {
                         duration += segmentReference.SubsegmentDuration;
                     }
                     double durationInSeconds = (double)duration / segmentIndexBox.TimeScale;
-                    Console.WriteLine($"Track ID: {segmentIndexBox.ReferenceID}, Duration: {durationInSeconds.ToString("0.000")} s");
+                    trackIDToDuration[trackID] = durationInSeconds;
                 }
+
+                MovieFragmentBox movieFragmentBox = (MovieFragmentBox)BoxHelper.FindBox(rootBoxes, BoxType.MovieFragmentBox);
+                if (movieFragmentBox != null)
+                {
+                    List<Box> trackFragmentBoxes = BoxHelper.FindBoxes(movieFragmentBox.Children, BoxType.TrackFragmentBox);
+                    for (int boxIndex = 0; boxIndex < segmentIndexBoxes.Count; boxIndex++)
+                    {
+                        TrackFragmentBox trackFragmentBox = (TrackFragmentBox)trackFragmentBoxes[boxIndex];
+                        TrackFragmentHeaderBox trackFragmentHeaderBox = (TrackFragmentHeaderBox)BoxHelper.FindBox(trackFragmentBox.Children, BoxType.TrackFragmentHeaderBox);
+                        TrackFragmentBaseMediaDecodeTimeBox trackFragmentBaseMediaDecodeTimeBox = (TrackFragmentBaseMediaDecodeTimeBox)BoxHelper.FindBox(trackFragmentBox.Children, BoxType.TrackFragmentBaseMediaDecodeTimeBox);
+                        uint trackID = trackFragmentHeaderBox.TrackID;
+                        long baseMediaDecodeTime = trackFragmentBaseMediaDecodeTimeBox.BaseMediaDecodeTime;
+                        string timeInformationString;
+                        if (trackIDToTimescale.TryGetValue(trackID, out uint timescale))
+                        {
+                            double durationInSeconds = trackIDToDuration[trackID];
+                            double decodeTime = (double)baseMediaDecodeTime / timescale;
+                            timeInformationString = $"Duration: {durationInSeconds.ToString("0.000")} s, Decode time: {decodeTime} s";
+                        }
+                        else
+                        {
+                            timeInformationString = $"Decode time: {baseMediaDecodeTime} (in timescale units)";
+                        }
+                        Console.WriteLine($"Track ID: {trackID}, {timeInformationString}");
+                    }
+                }
+                
                 return;
             }
 
