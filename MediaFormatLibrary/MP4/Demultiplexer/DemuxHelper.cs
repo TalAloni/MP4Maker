@@ -51,7 +51,11 @@ namespace MediaFormatLibrary.MP4
             SampleDescriptionBox sampleDescriptionBox = (SampleDescriptionBox)BoxHelper.FindBox(sampleTable.Children, BoxType.SampleDescriptionBox);
 
             SampleEntry sampleEntry = (SampleEntry)sampleDescriptionBox.Children[0];
+            DemuxTrack(sampleEntry, sampleSizeBox, chunkOffsetList, chunkSizeList, inputStream, trackStream);
+        }
 
+        public static void DemuxTrack(SampleEntry sampleEntry, SampleSizeBox sampleSizeBox, List<ulong> chunkOffsetList, List<long> chunkSizeList, Stream inputStream, Stream trackStream)
+        {
             if (sampleEntry is AVCVisualSampleEntry)
             {
                 // The SPS and PPS NAL units are stored in the AVCDecoderConfigurationRecordBox
