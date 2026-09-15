@@ -8,7 +8,7 @@ MP4Maker is a freeware Multiplexer written in C# supporting the following format
 • Stereoscopic Interleaved files (.ssif)  
 
 MP4Maker will accept the following input formats: H264, AAC, AC3.  
-MP4Maker can create PlayStation 3 / Sony W8 compatible 3D frame-sequential videos. ([Guide](https://www.doom9.org/showthread.php?t=170863))  
+MP4Maker can create PlayStation 3 / Sony W8 compatible 3D frame-sequential videos. ([Guide](https://forum.doom9.org/showthread.php?t=170863))  
 
 Contact:
 ========
